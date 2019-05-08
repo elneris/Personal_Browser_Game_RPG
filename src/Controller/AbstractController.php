@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Security\Authentication;
+use App\Security\ValidateForm;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -13,10 +14,13 @@ abstract class AbstractController
 
     protected $authenticator;
 
+    protected $security;
+
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);
         $this->authenticator = new Authentication();
+        $this->security = new ValidateForm();
         $this->twig = new Environment(
             $loader,
             [

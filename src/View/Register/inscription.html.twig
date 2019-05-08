@@ -19,6 +19,7 @@
                             <h3 class="thin text-center">Enregistrer un compte</h3>
                             <p class="text-center text-muted">Si vous avez déjà un compte, vous pouvez vous connecter ici : <br><a href="/login/login">Se connecter</a></p>
                             <hr>
+
                             {% for error in errors %}
                                 <div class="alert alert-danger">
                                     <strong>{{ error }}</strong>
@@ -31,8 +32,41 @@
                             {% endif %}
                             <form method="post" action="">
                                 <div class="top-margin">
-                                    <label for="login">Pseudo <span class="text-danger">*</span></label>
-                                    <input type="text" id="email" name="login" class="form-control" value="{{ post.login }}" required>
+                                    <label for="login">Pseudo(Login) <span class="text-danger">*</span></label>
+                                    <input type="text" id="login" pattern="^[a-z-A-Z_0-9]{1,20}$" name="username" class="form-control" value="{{ post.username }}" required>
+                                </div>
+                                <div class="top-margin">
+                                    <label for="charname">Nom du personnage <span class="text-danger">*</span></label>
+                                    <input type="text" id="charname" pattern="^[a-z-A-Z_0-9]{1,20}$" name="charname" class="form-control" value="{{ post.charname }}" required>
+                                </div>
+                                <div class="top-margin">
+                                    <label for="email">email <span class="text-danger">*</span></label>
+                                    <input type="text" id="email" name="email" class="form-control" value="{{ post.email }}" required>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="col-sm-6">
+                                        <label for="avatar">Avatar : <a href="#" onClick="window.open('/avatar.php','_blank','width=400, height=265');return(false)">voir.</a></label>
+                                        <select name="avatar" class="checkbox form-control" id="avatar">
+                                                <option value="1">Avatar 1</option>
+                                                <option value="2">Avatar 2</option>
+                                                <option value="3">Avatar 3</option>
+                                                <option value="4">Avatar 4</option>
+                                                <option value="5">Avatar 5</option>
+                                                <option value="6">Avatar 6</option>
+                                                <option value="7">Avatar 7</option>
+                                                <option value="8">Avatar 8</option>
+                                                <option value="9">Avatar 9</option>
+                                                <option value="10">Avatar 10</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="classe">Classe :</label>
+                                        <select name="charclass" class="checkbox form-control" id="classe">
+                                            <option value="1">Mage</option>
+                                            <option value="2">Guerrier</option>
+                                            <option value="3">Paladin</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="col-sm-6">

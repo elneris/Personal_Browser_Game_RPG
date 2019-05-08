@@ -1,4 +1,4 @@
-# Elneris : Projet mini RPG
+# Projet mini RPG
 
 ## Projet
 
@@ -7,9 +7,13 @@
 - La base du projet se repose sur RPG Illusion datant de 2007
 - Version php : 7.3
 - Version mysql : 8.0.15
+- Début du projet : 08/05/19
+
+## Equipe de développement
+
+- Elneris Dang
 
 ## Description
-
 Projet qui date depuis plus de 10 ans, j'ai toujours voulu savoir coder un jeu par navigateur en PHP.
 Aujourd'hui que j'ai les connaissances requis, et suite à mon mini projet lors du hackathon 2019 à
 la wild code school, je me lance dans ce grand chantier.
