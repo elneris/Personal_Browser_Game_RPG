@@ -1,4 +1,4 @@
-# Elneris : Projet mini RPG
+# Projet mini RPG
 
 ## Projet
 
@@ -7,9 +7,13 @@
 - La base du projet se repose sur RPG Illusion datant de 2007
 - Version php : 7.3
 - Version mysql : 8.0.15
+- Début du projet : 08/05/19
+
+## Equipe de développement
+
+- Elneris Dang
 
 ## Description
-
 Projet qui date depuis plus de 10 ans, j'ai toujours voulu savoir coder un jeu par navigateur en PHP.
 Aujourd'hui que j'ai les connaissances requis, et suite à mon mini projet lors du hackathon 2019 à
 la wild code school, je me lance dans ce grand chantier.
@@ -21,7 +25,7 @@ la wild code school, je me lance dans ce grand chantier.
     * En tant qu'A, je peux gérer les membres
     
 - Une partie Visiteur : V
-    * En tant que V, je peux m'inscrire
+    * En tant que V, je peux m'inscrire ✔️
     * En tant que V, je peux me connecter
     * En tant que V, je peux voir la page d'accueil
 
@@ -42,6 +46,14 @@ la wild code school, je me lance dans ce grand chantier.
     * Fonction : se reposer / se soigner
     * Fonction : Mettre en place des PA
     * Fonction : Regagner des PA / (H/J ???)
+    
+## Fonctions Terminés
+
+- Inscription :
+    * Formulaire inscription : ✔️
+    * Envoie d'un email de validation : ✔️
+    * Lien de confirmation : ✔️
+    * Ajout en base de donnée : ✔️
     
 ## Futur evolution
 
