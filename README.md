@@ -25,7 +25,7 @@ la wild code school, je me lance dans ce grand chantier.
     * En tant qu'A, je peux gérer les membres
     
 - Une partie Visiteur : V
-    * En tant que V, je peux m'inscrire
+    * En tant que V, je peux m'inscrire ✔️
     * En tant que V, je peux me connecter
     * En tant que V, je peux voir la page d'accueil
 
@@ -46,6 +46,14 @@ la wild code school, je me lance dans ce grand chantier.
     * Fonction : se reposer / se soigner
     * Fonction : Mettre en place des PA
     * Fonction : Regagner des PA / (H/J ???)
+    
+## Fonctions Terminés
+
+- Inscription :
+    * Formulaire inscription : ✔️
+    * Envoie d'un email de validation : ✔️
+    * Lien de confirmation : ✔️
+    * Ajout en base de donnée : ✔️
     
 ## Futur evolution
 
