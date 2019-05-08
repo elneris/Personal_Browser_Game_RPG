@@ -47,6 +47,6 @@ class Authentication
 
         mail($destinataire, $sujet, $message, $entete) ;
 
-        return $verifycode;
+        return ['verify' => $verifycode, 'username' => $login];
     }
 }

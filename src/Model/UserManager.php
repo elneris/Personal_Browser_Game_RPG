@@ -28,5 +28,44 @@ class UserManager extends AbstractManager
         $statement->execute();
     }
 
+    public function selectEmail(string $email): array
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE email =:email");
+        $statement->bindValue(':email', $email, \PDO::PARAM_STR);
+
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function selectOneByCharname(string $charname)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE charname=:charname");
+        $statement->bindValue('charname', $charname, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    public function insert(array $user)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO $this->table 
+        (username, email, password, charname, regdate, avatar, miniavatar, charclass, difficulty) 
+        VALUES (:username, :email, :password, :charname, NOW(), :avatar, :miniavatar, :charclass, '1')");
+        $statement->bindValue('username', $user['username'], \PDO::PARAM_STR);
+        $statement->bindValue('email', $user['email'], \PDO::PARAM_STR);
+        $statement->bindValue('password', $user['password'], \PDO::PARAM_STR);
+        $statement->bindValue('charname', $user['charname'], \PDO::PARAM_STR);
+        $statement->bindValue('avatar', $user['avatar'], \PDO::PARAM_STR);
+        $statement->bindValue('miniavatar', $user['avatar'], \PDO::PARAM_STR);
+        $statement->bindValue('charclass', $user['charclass'], \PDO::PARAM_STR);
+
+        $statement->execute();
+    }
+
+
+
 
 }
