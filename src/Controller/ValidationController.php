@@ -4,27 +4,32 @@
 namespace App\Controller;
 
 
+use App\Model\UserManager;
+
 class ValidationController extends AbstractController
 {
-    public function activation(string $loginKey, string $verifyKey)
+    public function activation(string $loginKey='', string $verifyKey='0')
     {
-        // TODO recup bdd login & verify
+        $userManager = new UserManager();
+        $user = $userManager->selectOneByUsername($loginKey);
 
         $errors = [];
         $success = [];
 
-        if ($verify == 1){
-            $errors[] = 'Votre compte est déjà actif !!!';
+        if (count($user) == 0) {
+            $errors[] = 'Erreur, votre login n\'est pas reconnu';
         } else {
-            if ($verify == $verifyKey){
-                $success[] = 'Votre compte à bien été activé !';
-
-                // TODO modifier verify par 1 en bdd
+            if ($user['verify'] == 1) {
+                $errors[] = 'Votre compte est déjà actif !!!';
             } else {
-                $errors[] = 'La clé ne correspond pas ! Votre compte ne peut pas être activé ...';
+                if ($user['verify'] == $verifyKey) {
+                    $success[] = 'Votre compte à bien été activé !';
+                    $userManager->insertVerify('1', $user['id']);
+                } else {
+                    $errors[] = 'La clé ne correspond pas ! Votre compte ne peut pas être activé ...';
+                }
             }
         }
-
         return $this->twig->render('Validation/activation.html.twig', [
             'errors' => $errors,
             'success' => $success
