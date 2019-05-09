@@ -10,7 +10,14 @@
                 <li><a href="/Contact/formulaire">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li><a class="btn" href="/login/login">Se Connecter</a></li>
+                {% if session.username %}
+                    <li><a class="btn" href="/Login/logout">Se Deconnecter</a></li>
+                {% endif %}
+                {% if session == false %}
+                    <li class="{% if server.REQUEST_URI == '/Login/index' %}} active{% endif %}">
+                        <a class="btn" href="/Login/login">Se Connecter</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

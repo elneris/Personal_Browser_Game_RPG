@@ -6,8 +6,20 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
+/**
+ * Class ValidationController
+ * @package App\Controller
+ */
 class ValidationController extends AbstractController
 {
+    /**
+     * @param string $loginKey
+     * @param string $verifyKey
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function activation(string $loginKey='', string $verifyKey='0')
     {
         $userManager = new UserManager();

@@ -1,0 +1,65 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li class="active">renvoyer le mail de validation</li>
+        </ol>
+        <div class="row">
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Mail de validation</h1>
+                </header>
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Entrez vos informations</h3>
+                            <p class="text-center text-muted">Un mail vous sera renvoyé à l'adresse renseigné !</p>
+                            <hr>
+                            {% for error in errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error | raw }}</strong>
+                                </div>
+                            {% endfor %}
+                            {% if success %}
+                                <div class="alert alert-success">
+                                    <strong>{{ success | raw }}</strong>
+                                </div>
+                            {% endif %}
+
+                            {# TODO supprimer ceci test pour localhost #}
+                            {% if mail %}
+                                <div class="alert alert-success">
+                                    <strong>{{ mail | raw }}</strong>
+                                </div>
+                            {% endif %}
+                            {# TODO fin #}
+
+                            <form method="post" action="">
+                                <div class="top-margin">
+                                    <label for="username">Pseudo<span class="text-danger">*</span></label>
+                                    <input id="username" pattern="^[a-z-A-Z_0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.]{1,20}$" name="username" type="text" class="form-control" value="{{ post.username }}">
+                                </div>
+                                <div class="top-margin">
+                                    <label for="email">email<span class="text-danger">*</span></label>
+                                    <input id="email" name="email" type="email" class="form-control">
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" name="submit" value="submit" type="submit">Renvoyer un mail</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+
+{% endblock %}
