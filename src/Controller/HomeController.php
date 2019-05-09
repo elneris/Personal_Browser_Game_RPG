@@ -10,4 +10,10 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
+
+    public function accueil()
+    {
+        var_dump($_SESSION);
+        //return $this->twig->render('Home/accueil.html.twig');
+    }
 }

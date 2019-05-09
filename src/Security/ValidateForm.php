@@ -6,6 +6,28 @@ namespace App\Security;
 
 class ValidateForm
 {
+
+    public function valideInputs($values)
+    {
+        $errors = [];
+
+        foreach ($values as $key => $value){
+            if (empty($value)) {
+                $errors[] = 'Veuillez remplir tout les champs';
+            }
+
+            if ($key == 'email') {
+                if (!($this->security->emailCheck($value))) {
+                    $errors[] = 'Email non valide';
+                } else {
+                    $_POST[$key] = $this->security->strCheck($value);
+                }
+            }
+        }
+
+        return $errors;
+    }
+
     /**
      * @param string $str
      * @return string

@@ -20,6 +20,24 @@ class Authentication
         }
     }
 
+    public function setSession(array $values)
+    {
+        $_SESSION['id'] = $values['id'];
+        $_SESSION['username'] = $values['username'];
+        $_SESSION['lastname'] = $values['charname'];
+    }
+
+    public function isVerify(string $verify)
+    {
+        if ($verify == 1){
+            $result = true;
+        } else {
+            $result = false;
+        }
+
+        return $result;
+    }
+
     public function validationCode(array $values)
     {
         $email = $values['email'];
