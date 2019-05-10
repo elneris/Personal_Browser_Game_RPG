@@ -4,24 +4,36 @@
 namespace App\Security;
 
 
+/**
+ * Class ValidateForm
+ * @package App\Security
+ */
 class ValidateForm
 {
-    /**
-     * @param string $str
-     * @return string
-     */
-    public function strCheck(string $str):string
-    {
-        return htmlspecialchars(trim($str));
-    }
 
     /**
-     * @param string $str
-     * @return mixed
+     * @param $values
+     * @return array
      */
-    public function emailCheck(string $str)
+    public function valideInputs($values)
     {
-        return filter_var($str, FILTER_VALIDATE_EMAIL);
+        $errors = [];
+
+        foreach ($values as $key => $value){
+            if (empty($value)) {
+                $errors[] = 'Veuillez remplir tout les champs';
+                break;
+            }
+
+            if ($key == 'email') {
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    $errors[] = 'Email non valide';
+                }
+            } else {
+                $_POST[$key] = htmlspecialchars(trim($value));
+            }
+        }
+        return $errors;
     }
 
     /**

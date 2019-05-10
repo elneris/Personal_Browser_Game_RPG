@@ -33,11 +33,11 @@
                             <form method="post" action="">
                                 <div class="top-margin">
                                     <label for="login">Pseudo(Login) <span class="text-danger">*</span></label>
-                                    <input type="text" id="login" pattern="^[a-z-A-Z_0-9]{1,20}$" name="username" class="form-control" value="{{ post.username }}" required>
+                                    <input type="text" id="login" pattern="^[a-z-A-Z_0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.]{1,20}$" name="username" class="form-control" value="{{ post.username }}" required>
                                 </div>
                                 <div class="top-margin">
                                     <label for="charname">Nom du personnage <span class="text-danger">*</span></label>
-                                    <input type="text" id="charname" pattern="^[a-z-A-Z_0-9]{1,20}$" name="charname" class="form-control" value="{{ post.charname }}" required>
+                                    <input type="text" id="charname" pattern="^[a-z-A-Z_0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.]{1,20}$" name="charname" class="form-control" value="{{ post.charname }}" required>
                                 </div>
                                 <div class="top-margin">
                                     <label for="email">email <span class="text-danger">*</span></label>
@@ -83,7 +83,7 @@
                                     <div class="col-lg-8">
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" name="submit" type="submit">Envoyer</button>
+                                        <button class="btn btn-action" name="submit" value="submit" type="submit">Envoyer</button>
                                     </div>
                                 </div>
                             </form>

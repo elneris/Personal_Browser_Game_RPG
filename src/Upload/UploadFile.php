@@ -2,9 +2,16 @@
 
 namespace App\Upload;
 
+/**
+ * Class UploadFile
+ * @package App\Upload
+ */
 class UploadFile
 {
 
+    /**
+     *
+     */
     const ERROR  = [
         0 => "Aucune erreur, OK",
         1 => "La taille du picture téléchargé excède la valeur 
@@ -18,6 +25,9 @@ class UploadFile
               PHP ne propose aucun moyen de déterminer quelle extension est en cause. ",
     ];
 
+    /**
+     *
+     */
     const PICTURE = [
         'png',
         'jpe',
@@ -33,6 +43,9 @@ class UploadFile
         'jfif'
     ];
 
+    /**
+     *
+     */
     const AUDIO_VIDEO = [
         'mp3',
         'qt',
@@ -41,6 +54,9 @@ class UploadFile
         'avi'
     ];
 
+    /**
+     *
+     */
     const FILES = [
         'txt',
         'htm',
@@ -57,6 +73,12 @@ class UploadFile
         'pdf'
     ];
 
+    /**
+     * @param $name
+     * @param $type
+     * @param $uploadDir
+     * @return mixed
+     */
     public function upload($name, $type, $uploadDir)
     {
         switch ($type) {

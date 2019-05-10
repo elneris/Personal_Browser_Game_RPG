@@ -21,13 +21,13 @@
                                 <hr>
                                 {% for error in errors %}
                                     <div class="alert alert-danger">
-                                        <strong>{{ error }}</strong>
+                                        <strong>{{ error | raw }}</strong>
                                     </div>
                                 {% endfor %}
                                 <form method="post" action="">
                                     <div class="top-margin">
-                                        <label for="login">Pseudo<span class="text-danger">*</span></label>
-                                        <input id="login" name="login" type="text" class="form-control" value="{{ post.login }}">
+                                        <label for="username">Pseudo<span class="text-danger">*</span></label>
+                                        <input id="username" pattern="^[a-z-A-Z_0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.]{1,20}$" name="username" type="text" class="form-control" value="{{ post.username }}">
                                     </div>
                                     <div class="top-margin">
                                         <label for="password">Password <span class="text-danger">*</span></label>
@@ -36,9 +36,10 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-lg-4 text-right">
-                                            <button class="btn btn-action" name="submit" type="submit">Connexion</button>
+                                            <button class="btn btn-action" name="submit" value="submit" type="submit">Connexion</button>
                                         </div>
                                     </div>
+                                    <p class="text-right text-muted"><a href="/Login/lostPassword">Mot de passe oublié</a>.</p>
                                 </form>
                             </div>
                         </div>

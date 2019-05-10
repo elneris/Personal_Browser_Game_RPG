@@ -4,6 +4,10 @@
 namespace App\Model;
 
 
+/**
+ * Class UserManager
+ * @package App\Model
+ */
 class UserManager extends AbstractManager
 {
     /**
@@ -19,6 +23,10 @@ class UserManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /**
+     * @param string $verify
+     * @param int $id
+     */
     public function insertVerify(string $verify, int $id)
     {
         // prepared request
@@ -28,6 +36,10 @@ class UserManager extends AbstractManager
         $statement->execute();
     }
 
+    /**
+     * @param string $email
+     * @return array
+     */
     public function selectEmail(string $email): array
     {
         // prepared request
@@ -38,6 +50,10 @@ class UserManager extends AbstractManager
         return $statement->fetchAll();
     }
 
+    /**
+     * @param string $charname
+     * @return mixed
+     */
     public function selectOneByCharname(string $charname)
     {
         // prepared request
@@ -48,6 +64,9 @@ class UserManager extends AbstractManager
         return $statement->fetch();
     }
 
+    /**
+     * @param array $user
+     */
     public function insert(array $user)
     {
         // prepared request
@@ -65,7 +84,17 @@ class UserManager extends AbstractManager
         $statement->execute();
     }
 
+    /**
+     * @param int $id
+     * @param string $password
+     */
+    public function changePassword(int $id, string $password)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE $this->table SET password = :password WHERE id = :id");
+        $statement->bindValue('password', $password, \PDO::PARAM_STR);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
 
-
-
+        $statement->execute();
+    }
 }

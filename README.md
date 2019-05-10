@@ -26,8 +26,8 @@ la wild code school, je me lance dans ce grand chantier.
     
 - Une partie Visiteur : V
     * En tant que V, je peux m'inscrire ✔️
-    * En tant que V, je peux me connecter
-    * En tant que V, je peux voir la page d'accueil
+    * En tant que V, je peux me connecter ✔️
+    * En tant que V, je peux voir la page d'accueil 
 
 - Une partie Membre : M
     * En tant que M, je peux accéder au jeu
@@ -54,6 +54,13 @@ la wild code school, je me lance dans ce grand chantier.
     * Envoie d'un email de validation : ✔️
     * Lien de confirmation : ✔️
     * Ajout en base de donnée : ✔️
+    * Renvoi Mail activation : ✔️
+    
+- Connexion :
+    * Formulaire de connexion : ✔️
+    * Vérification actif : ✔
+    * Mise en place de la session : ✔️
+    * Mot de passe oublié : ✔️
     
 ## Futur evolution
 
