@@ -57,13 +57,12 @@ class LoginController extends AbstractController
      */
     public function newVerifyEmail()
     {
-        //$this->authenticator->isLogged('username');
+        $this->authenticator->isLogged('username');
 
         $userManager = new UserManager();
 
         $errors = '';
         $success = '';
-        $mail = ''; //TODO a suppr en prod
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
             $errors = $this->security->valideInputs($_POST);
@@ -74,15 +73,14 @@ class LoginController extends AbstractController
                 if (($_POST['email']) != $user['email'] || count($user) == 0) {
                     $errors[] = 'Utilisateur ou email incorrect';
                 } else {
-                    $mail = $this->authenticator->newValidationCode($user); //TODO $mail a suppr en prod
+                    $this->authenticator->newValidationCode($user);
                     $success = $user['username'] . ' , un nouveau mail vous a été envoyé à l\'adresse : ' . $user['email'];
                 }
             }
         }
         return $this->twig->render('Login/newMail.html.twig', [
             'errors' => $errors,
-            'success' => $success,
-            'mail' => $mail //TODO a supprimer en prod
+            'success' => $success
         ]);
     }
 
@@ -94,5 +92,44 @@ class LoginController extends AbstractController
         session_unset();
         session_destroy();
         header('location: /Home/index');
+    }
+
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function lostPassword()
+    {
+        $this->authenticator->isLogged('username');
+
+        $userManager = new UserManager();
+
+        $errors = '';
+        $success = '';
+        $newPassword = '';
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+            $errors = $this->security->valideInputs($_POST);
+
+            if (count($errors) == 0) {
+                $user = $userManager->selectOneByUsername($_POST['username']);
+
+                if (($_POST['email']) != $user['email'] || count($user) == 0) {
+                    $errors[] = 'Utilisateur ou email incorrect';
+                } else {
+                    $newPassword = $this->authenticator->passwordLost($user);
+                    $success = 'Un nouveau  MDP vous a été envoyé à l\'adresse : ' . $user['email'];
+                    $userManager->changePassword($user['id'], $newPassword['passwordCrypt']);
+                }
+            }
+        }
+
+        return $this->twig->render('Login/newPassword.html.twig',[
+            'success' => $success,
+            'errors' => $errors,
+            'password' => $newPassword //TODO a supprimer
+        ]);
     }
 }

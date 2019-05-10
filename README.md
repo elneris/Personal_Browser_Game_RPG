@@ -60,7 +60,7 @@ la wild code school, je me lance dans ce grand chantier.
     * Formulaire de connexion : ✔️
     * Vérification actif : ✔
     * Mise en place de la session : ✔️
-    * Mot de passe oublié : [En Cours]️
+    * Mot de passe oublié : ✔️
     
 ## Futur evolution
 

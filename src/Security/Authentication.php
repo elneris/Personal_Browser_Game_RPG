@@ -91,7 +91,6 @@ class Authentication
 
     /**
      * @param array $values
-     * @return string
      */
     public function newValidationCode(array $values)
     {
@@ -116,8 +115,39 @@ class Authentication
 
 
         mail($destinataire, $sujet, $message, $entete) ;
+    }
 
-        return 'http://localhost:8000/Validation/activation/' . urlencode($login) . '/' . urlencode($verifycode);
-        // TODO return a supprimer en prod
+    /**
+     * @param array $values
+     * @return array
+     */
+    public function passwordLost(array $values)
+    {
+        $email = $values['email'];
+        $login = $values['username'];
+        $newPassword = "";
+        for ($i=0; $i<8; $i++) {
+            $newPassword .= chr(rand(65,90));
+        }
+        $newCryptPass = sha1($newPassword);
+        $destinataire = $email;
+        $sujet = "Nouveau Mot de pass" ;
+        $entete = "From: elneris.dang@gmail.com" ;
+
+        $message = 'Bonjour ' . $login . ' vous ou une personne employant votre adresse email a perdu son mot de passe sur RPG game. 
+
+        Nous vous avons envoyé un nouveau mot de passe. Ainsi vous pourrez continuer à jouer sur le jeu.
+        
+        Votre nouveau PW est: ' . $newPassword . '
+        
+        Merci de votre participation.
+          
+        ---------------
+        Ceci est un mail automatique, Merci de ne pas y répondre.';
+
+
+        mail($destinataire, $sujet, $message, $entete) ;
+
+        return ['passwordCrypt' => $newCryptPass, 'newPassword' => $newPassword];
     }
 }
