@@ -3,11 +3,12 @@
 
 namespace App\Controller;
 
+
 /**
- * Class ErrorController
+ * Class ContactController
  * @package App\Controller
  */
-class ErrorController extends AbstractController
+class ContactController extends AbstractController
 {
     /**
      * @return string
@@ -15,8 +16,8 @@ class ErrorController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function pageNotFound()
+    public function formulaire()
     {
-        return $this->twig->render('Home/404.html.twig');
+        return $this->twig->render('Contact/formulaire.html.twig');
     }
 }

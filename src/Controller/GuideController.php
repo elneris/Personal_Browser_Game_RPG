@@ -3,11 +3,12 @@
 
 namespace App\Controller;
 
+
 /**
- * Class ErrorController
+ * Class GuideController
  * @package App\Controller
  */
-class ErrorController extends AbstractController
+class GuideController extends AbstractController
 {
     /**
      * @return string
@@ -15,8 +16,8 @@ class ErrorController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function pageNotFound()
+    public function index()
     {
-        return $this->twig->render('Home/404.html.twig');
+        return $this->twig->render('Guide/index.html.twig');
     }
 }
